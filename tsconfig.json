@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "paths": { "@/*": ["./src/*"] }
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
