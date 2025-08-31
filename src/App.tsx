@@ -1,4 +1,3 @@
-import React from 'react'
 import { CountryStateDropdowns } from '@/components/country-state-dropdowns'
 
 export default function App() {
