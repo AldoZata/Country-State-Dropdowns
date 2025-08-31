@@ -127,17 +127,19 @@ Visit `http://localhost:3000` to see the application.
 - [ ] Submit button validates selections
 - [ ] Accessibility features work with keyboard navigation
 
-### Automated Testing (Future Enhancement)
-Recommended testing approach:
-```typescript
-// Example test structure
-describe('CountryStateDropdowns', () => {
-  it('loads countries on mount')
-  it('loads states when country is selected')
-  it('resets state selection when country changes')
-  it('handles API errors gracefully')
-  it('validates form submission')
-})
+### Automated Testing
+This project uses Vitest + React Testing Library and JSDOM.
+
+- Unit tests:
+  - `src/lib/utils.test.ts` – className merger `cn`
+  - `src/lib/api.test.ts` – API helpers with fetch mocking and sorting/error paths
+- Component tests:
+  - `src/components/country-state-dropdowns.test.tsx` – loads countries, cascades states, enables submit
+
+Run tests:
+```bash
+npm run test        # one-off
+npm run test:watch  # watch mode
 ```
 
 ## 🔧 API Integration
@@ -151,6 +153,37 @@ describe('CountryStateDropdowns', () => {
 - Proper error handling and logging
 - TypeScript interfaces for type safety
 - Centralized configuration (base URL, headers)
+
+## 🎨 Styling and Animations (Tailwind v4)
+
+Tailwind v4 is configured via CSS. Animations are provided by `tailwindcss-animate` and loaded using the v4 `@plugin` directive.
+
+`src/index.css`
+```css
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+```
+
+Common utilities used:
+- `data-[state=open]:animate-in` / `data-[state=closed]:animate-out`
+- `fade-in-0`, `fade-out-0`, `zoom-in-95`, `zoom-out-95`
+- `slide-in-from-*`
+
+Install (already included):
+```bash
+npm i -D tailwindcss-animate
+```
+
+## 📜 Scripts
+
+```bash
+npm run dev        # start development server
+npm run build      # type-check and build for production
+npm run preview    # preview production build
+npm run lint       # run ESLint
+npm run test       # run tests once (Vitest)
+npm run test:watch # run tests in watch mode
+```
 
 ## 🎯 Production Considerations
 
